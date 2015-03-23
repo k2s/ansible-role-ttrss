@@ -1,0 +1,49 @@
+---
+- name: Install TTRSS deps
+  apt: name={{ item }} state=present
+  with_items:
+    - php5-pgsql
+    - php5-curl
+    - curl
+    - php5-mcrypt
+    - php5-cli
+    - git
+    - python-psycopg2
+
+- name: Download TTRSS
+  git: repo=https://github.com/gothfox/Tiny-Tiny-RSS.git dest=/var/www/ttrss
+
+- name: Set TTRSS permissions
+  file: path=/var/www/ttrss/{{ item }} owner=www-data group=www-data
+  with_items:
+    - cache/export
+    - cache/images
+    - cache/js
+    - cache/simplepie
+    - cache/upload
+    - feed-icons
+    - lock
+
+- name: Remove nginix default site
+  file: path=/etc/nginx/{{ item }}/default state=absent
+  with_items:
+    - sites-enabled
+    - sites-available
+
+- name: Setup nginx site config for ttrss
+  template: dest=/etc/nginx/sites-available/ttrss src=nginx.conf
+
+- name: Enable ttrss site in nginx
+  file: path=/etc/nginx/sites-enabled/ttrss state=link src=/etc/nginx/sites-available/ttrss
+
+- name: Create postgres ttrss user
+  postgresql_user: name='{{ ttrss_db_user }}' password='{{ ttrss_db_pass }}'
+  sudo_user: postgres
+
+- name: Create ttrss postgres database
+  postgresql_db: name='{{ ttrss_db_name }}' owner='{{ ttrss_db_user }}'
+  sudo_user: postgres
+  notify: init db schema
+
+- name: Install ttrss config file
+  template: dest=/var/www/ttrss/config.php src=ttrss-config.php owner=www-data group=www-data mode=0600

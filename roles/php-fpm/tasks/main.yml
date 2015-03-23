@@ -1,0 +1,21 @@
+---
+- name: Install php-fpm and deps 
+  apt: name={{ item }} state=present
+  with_items:
+    - php5-common
+    - php5-fpm
+
+- name: Set php configs
+  ini_file: dest="/etc/php5/fpm/php.ini" section="PHP" option="cgi.fix_pathinfo" value="0"
+  notify: restart php-fpm
+
+- name: Set php-fpm configs
+  ini_file: dest=/etc/php5/fpm/pool.d/www.conf section=www option={{ item.0 }} value={{ item.1 }}
+  with_together:
+    - [ 'listen', 'listen.owner', 'listen.group', 'listen.mode' ]
+    - [ '/var/run/php5-fpm.sock', 'www-data', 'www-data', '0660' ]
+  notify: restart php-fpm
+
+- name: Set Nginx configs
+  lineinfile: dest=/etc/nginx/fastcgi_params regexp='^fastcgi_param\W+PATH_TRANSLATED ' line='fastcgi_param PATH_TRANSLATED \$document_root\$fastcgi_script_name;'
+  notify: restart nginx

@@ -1,0 +1,5 @@
+[ttrss-server]
+rss.polarfire.net:2222
+
+[kallithea-server]
+code.polarfire.net:2222
