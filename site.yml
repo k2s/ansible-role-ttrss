@@ -1,7 +1,6 @@
 ---
 - name: Install TTRSS
   hosts: ttrss-server
-  remote_user: vagrant
   sudo: yes
 
   roles:

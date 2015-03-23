@@ -1,5 +1,2 @@
 [ttrss-server]
-rss.polarfire.net:2222
-
-[kallithea-server]
-code.polarfire.net:2222
+localhost ansible_ssh_port=2222 ansible_ssh_user=vagrant
