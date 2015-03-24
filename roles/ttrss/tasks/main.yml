@@ -43,7 +43,14 @@
 - name: Create ttrss postgres database
   postgresql_db: name='{{ ttrss_db_name }}' owner='{{ ttrss_db_user }}'
   sudo_user: postgres
-  notify: init db schema
+
+- name: init db schema
+  shell: psql -h localhost -U '{{ ttrss_db_user }}' -f /var/www/ttrss/schema/ttrss_schema_pgsql.sql '{{ ttrss_db_name }}'
+         && touch /var/www/ttrss/schema/.configured
+         creates=/var/www/ttrss/schema/.configured
+  environment:
+    PGPASSWORD: '{{ ttrss_db_pass }}'
 
 - name: Install ttrss config file
   template: dest=/var/www/ttrss/config.php src=ttrss-config.php owner=www-data group=www-data mode=0600
+

@@ -1,5 +1,0 @@
----
-- name: init db schema
-  shell: 'psql -h localhost -U {{ ttrss_db_user }} -f /var/www/ttrss/schema/ttrss_schema_pgsql.sql {{ ttrss_db_name }}'
-  environment:
-    PGPASSWORD: '{{ ttrss_db_pass }}'
