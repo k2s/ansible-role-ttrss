@@ -64,3 +64,10 @@
 - name: Install ttrss config file
   template: dest=/var/www/ttrss/config.php src=ttrss-config.php owner=www-data group=www-data mode=0600
 
+- name: Install cron task for updates
+  cron:
+    user: www-data
+    name: ttrss_update
+    hour: '*/3'
+    minute: 7
+    job: php /var/www/ttrss/update.php --feeds --quiet
