@@ -1,0 +1,8 @@
+base with ntp
+grab timezone from host
+base with apt-get update + upgrade?
+backups!
+restores!
+figure out something good for password management
+all nginx configs use separate error logs?
+
