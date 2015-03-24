@@ -1,6 +1,6 @@
 ---
 - name: Install php-fpm and deps 
-  apt: name={{ item }} state=present
+  apt: name={{ item }} state=present update_cache=yes cache_valid_time=86400
   with_items:
     - php5-common
     - php5-fpm
@@ -19,3 +19,4 @@
 - name: Set Nginx configs
   lineinfile: dest=/etc/nginx/fastcgi_params regexp='^fastcgi_param\W+PATH_TRANSLATED ' line='fastcgi_param PATH_TRANSLATED \$document_root\$fastcgi_script_name;'
   notify: restart nginx
+
