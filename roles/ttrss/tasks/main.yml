@@ -6,6 +6,7 @@
     - php5-curl
     - curl
     - php5-mcrypt
+    - python-passlib
     - php5-cli
     - git
     - python-psycopg2
@@ -29,12 +30,21 @@
   with_items:
     - sites-enabled
     - sites-available
+  notify: restart nginx
+
+- name: Create the password for single-user auth in ttrss
+  htpasswd: path=/etc/nginx/ttrss.htpasswd name='{{ ttrss_user }}' password='{{ ttrss_pass }}'
+
+- name: Check the permissions on ttrss password file
+  file: path=/etc/nginx/ttrss.htpasswd owner=www-data group=www-data mode=0600
 
 - name: Setup nginx site config for ttrss
   template: dest=/etc/nginx/sites-available/ttrss src=nginx.conf
+  notify: restart nginx
 
 - name: Enable ttrss site in nginx
   file: path=/etc/nginx/sites-enabled/ttrss state=link src=/etc/nginx/sites-available/ttrss
+  notify: restart nginx
 
 - name: Create postgres ttrss user
   postgresql_user: name='{{ ttrss_db_user }}' password='{{ ttrss_db_pass }}'
