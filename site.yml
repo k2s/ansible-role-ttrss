@@ -1,7 +1,0 @@
----
-- name: Install TTRSS
-  hosts: ttrss-servers
-  sudo: yes
-
-  roles:
-    - ttrss

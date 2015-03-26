@@ -1,7 +1,5 @@
 base with ntp
 grab timezone from host
-backups!
-restores!
 figure out something good for password management
 all nginx configs use separate error logs?
 SMTP settings
