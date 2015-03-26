@@ -6,6 +6,7 @@
 - name: Set TTRSS permissions
   file: path=/var/www/ttrss/{{ item }} owner=www-data group=www-data
   with_items:
+    - cache
     - cache/export
     - cache/images
     - cache/js
