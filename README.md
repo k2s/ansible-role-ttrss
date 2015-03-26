@@ -38,5 +38,4 @@ A more complex example:
 
 ## License ##
 
-BSD
-
+Simplified BSD
