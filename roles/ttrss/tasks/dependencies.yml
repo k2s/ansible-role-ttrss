@@ -1,9 +1,24 @@
 ---
-- name: Install php-fpm and deps 
-  apt: name={{ item }} state=present update_cache=yes cache_valid_time=86400
+- name: Install apt-add-repository dependencies
+  apt: name=python-pycurl state=present update_cache=yes cache_valid_time=86400
+
+- name: Add stable nginx repository
+  apt_repository: repo='ppa:nginx/stable'
+
+- name: Install packages
+  apt: name={{ item }} state=present
   with_items:
+    - php5-pgsql
+    - php5-curl
+    - curl
+    - php5-mcrypt
+    - php5-cli
+    - git
     - php5-common
     - php5-fpm
+    - python-psycopg2
+    - nginx
+    - postgresql
 
 - name: Set php configs
   ini_file: dest="/etc/php5/fpm/php.ini" section="PHP" option="cgi.fix_pathinfo" value="0"
@@ -20,3 +35,9 @@
   lineinfile: dest=/etc/nginx/fastcgi_params regexp='^fastcgi_param\W+PATH_TRANSLATED ' line='fastcgi_param PATH_TRANSLATED \$document_root\$fastcgi_script_name;'
   notify: restart nginx
 
+- name: Start services
+  service: name={{ item }} state=started enabled=yes
+  with_items:
+    - postgresql
+    - php5-fpm
+    - nginx

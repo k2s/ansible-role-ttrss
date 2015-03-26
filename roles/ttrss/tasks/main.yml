@@ -1,5 +1,4 @@
 ---
-- include: nginx.yml
-- include: postgres.yml
-- include: php-fpm.yml
+- include: dependencies.yml
+- include: database.yml
 - include: ttrss.yml

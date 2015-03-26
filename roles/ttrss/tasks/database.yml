@@ -1,0 +1,16 @@
+---
+- name: Create postgres ttrss user
+  postgresql_user: name='{{ ttrss_db_user }}' password='{{ ttrss_db_pass }}'
+  sudo_user: postgres
+
+- name: Create ttrss postgres database
+  postgresql_db: name='{{ ttrss_db_name }}' owner='{{ ttrss_db_user }}'
+  sudo_user: postgres
+
+- name: init db schema
+  shell: psql -h localhost -U '{{ ttrss_db_user }}' -f /var/www/ttrss/schema/ttrss_schema_pgsql.sql '{{ ttrss_db_name }}'
+         && touch /root/ttrss_schema_loaded
+         creates=/root/ttrss_schema_loaded
+  environment:
+    PGPASSWORD: '{{ ttrss_db_pass }}'
+

@@ -5,3 +5,5 @@ ttrss_user: admin
 ttrss_pass: password
 ttrss_url: 'http://{{ inventory_hostname }}:8000/'
 
+remove_default_nginx_site: true
+
