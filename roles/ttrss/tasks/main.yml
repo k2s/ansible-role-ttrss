@@ -1,4 +1,4 @@
 ---
 - include: dependencies.yml
-- include: database.yml
 - include: ttrss.yml
+- include: database.yml
