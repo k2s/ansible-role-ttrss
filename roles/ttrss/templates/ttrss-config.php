@@ -18,7 +18,7 @@
 	// *** Basic settings (important!) ***
 	// ***********************************
 
-	define('SELF_URL_PATH', 'http://{{ inventory_hostname }}{{ ttrss_path }}');
+	define('SELF_URL_PATH', '{{ ttrss_url }}');
 	// Full URL of your tt-rss installation. This should be set to the
 	// location of tt-rss directory, e.g. http://example.org/tt-rss/
 	// You need to set this option correctly otherwise several features
@@ -31,7 +31,7 @@
 	// Warning: changing this key will make your stored feed passwords impossible
 	// to decrypt.
 	
-	define('SINGLE_USER_MODE', true);
+	define('SINGLE_USER_MODE', false);
 	// Operate in single user mode, disables all functionality related to
 	// multiple users and authentication. Enabling this assumes you have
 	// your tt-rss directory protected by other means (e.g. http auth).

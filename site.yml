@@ -1,10 +1,7 @@
 ---
 - name: Install TTRSS
-  hosts: ttrss-server
+  hosts: ttrss-servers
   sudo: yes
 
   roles:
-    - postgres
-    - nginx
-    - php-fpm
     - ttrss
