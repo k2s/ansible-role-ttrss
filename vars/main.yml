@@ -2,10 +2,10 @@
 ttrss_db_name: ttrss
 ttrss_db_user: ttrss
 ttrss_hostname: '{{ inventory_hostname }}'
-ttrss_port: '{{ 443 if ttrss_use_ssl else 80 }}'
+ttrss_use_https: false
+ttrss_port: '{{ 443 if ttrss_use_https else 80 }}'
 ttrss_port_string: ':{{ ttrss_port }}'
-ttrss_use_ssl: false
-ttrss_base_url: '{{ "https" if ttrss_use_ssl else "http" }}://{{ ttrss_hostname }}{{ ttrss_port_string if ttrss_port != 80 and ttrss_port != 443 }}/'
+ttrss_base_url: '{{ "https" if ttrss_use_https else "http" }}://{{ ttrss_hostname }}{{ ttrss_port_string if ttrss_port != 80 and ttrss_port != 443 }}/'
 ttrss_install_path: /var/www/ttrss
 keep_default_nginx_site: false
 ttrss_feed_crypt_key: ABCDEFGHIJKLMNOPQRSTUVWX
