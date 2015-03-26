@@ -24,7 +24,7 @@
     - sites-enabled
     - sites-available
   notify: restart nginx
-  when: remove_default_nginx_site
+  when: not keep_default_nginx_site
 
 - name: Setup nginx site config for ttrss
   template: dest=/etc/nginx/sites-available/ttrss src=nginx.conf
