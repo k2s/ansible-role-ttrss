@@ -38,6 +38,6 @@
   cron:
     user: www-data
     name: ttrss_update
-    minute: '*/5'
-    job: /usr/bin/php /var/www/ttrss/update.php --feeds
+    hour: '*/3'
+    job: /usr/bin/php /var/www/ttrss/update.php --feeds --quiet
 
