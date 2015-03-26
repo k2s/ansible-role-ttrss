@@ -1,4 +1,3 @@
-all nginx configs use separate error logs?
 SMTP settings
 sometimes on first install, the nginx -> php connection is broken until something gets restarted. Figure out which handler needs to be called again
 https stuff
