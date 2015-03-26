@@ -1,6 +1,6 @@
 # ttrss #
 
-This role will install Tiny Tiny RSS from source with PostgreSQL, nginx and php5-fpm.
+This [Ansible](http://www.ansible.com/home) role will install [Tiny Tiny RSS](http://tt-rss.org/) from source with PostgreSQL and nginx.
 
 ## Role Variables ##
 
@@ -36,10 +36,7 @@ A more complex example:
 
     coming soon
 
-License
--------
+## License ##
 
 BSD
 
----
-ttrss_install_path: /var/www/ttrss
