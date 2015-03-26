@@ -4,7 +4,8 @@ galaxy_info:
   description: Installs Tiny Tiny RSS with PostgreSQL and nginx
   license: BSD
   min_ansible_version: 1.2
-#TODO: test this with different ansible and target OS versions
+  #TODO: test this with different ansible and target OS versions
+  platforms:
   - name: Ubuntu
   #  versions:
   #  - all
