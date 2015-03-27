@@ -9,3 +9,5 @@ ttrss_base_url: '{{ "https" if ttrss_use_https else "http" }}://{{ ttrss_hostnam
 ttrss_install_path: /var/www/ttrss
 keep_default_nginx_site: false
 ttrss_feed_crypt_key: ABCDEFGHIJKLMNOPQRSTUVWX
+ttrss_cert_path: 
+ttrss_cert_key_path: 

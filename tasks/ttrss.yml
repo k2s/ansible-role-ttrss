@@ -26,6 +26,16 @@
   notify: restart nginx
   when: not keep_default_nginx_site
 
+- name: Install ssl certificate
+  copy: src=ttrss.crt dest='/etc/ssl/certs/{{ ttrss_hostname }}.crt' owner=root group=root mode=0644
+  when: ttrss_use_https and not ttrss_cert_path
+  notify: restart nginx
+
+- name: Install ssl certificate key
+  copy: src=ttrss.key dest='/etc/ssl/private/{{ ttrss_hostname }}.key' owner=root group=ssl-cert mode=0640
+  when: ttrss_use_https and not ttrss_cert_key_path
+  notify: restart nginx
+
 - name: Setup nginx site config for ttrss
   template: dest=/etc/nginx/sites-available/ttrss src=nginx.conf
   notify: restart nginx
