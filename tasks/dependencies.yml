@@ -1,10 +1,4 @@
 ---
-- name: Install apt-add-repository dependencies
-  apt: name=python-pycurl state=present update_cache=yes cache_valid_time=86400
-
-- name: Add stable nginx repository
-  apt_repository: repo='ppa:nginx/stable'
-
 - name: Install packages
   apt: name={{ item }} state=present
   with_items:
