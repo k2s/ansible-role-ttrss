@@ -37,7 +37,7 @@
   notify: restart nginx
 
 - name: Setup nginx site config for ttrss
-  template: dest=/etc/nginx/sites-available/ttrss src=nginx.conf
+  template: dest=/etc/nginx/sites-available/ttrss src=ttrss_nginx.conf
   notify: restart nginx
 
 - name: Enable ttrss site in nginx
