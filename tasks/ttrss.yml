@@ -32,7 +32,7 @@
   notify: restart nginx
 
 - name: Install ssl certificate key
-  copy: src=ttrss.key dest='/etc/ssl/private/{{ ttrss_hostname }}.key' owner=root group=ssl-cert mode=0640
+  copy: src=ttrss.key dest='/etc/ssl/private/{{ ttrss_hostname }}.key' owner=root group=www-data mode=0640
   when: ttrss_use_https and not ttrss_cert_key_path
   notify: restart nginx
 
