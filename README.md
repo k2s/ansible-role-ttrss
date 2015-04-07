@@ -20,7 +20,6 @@ This [Ansible](http://www.ansible.com/home) role will install [Tiny Tiny RSS](ht
 * `ttrss_install_path` - Location to install TTRSS (default: `/var/www/ttrss`)
 * `ttrss_base_url` - Full URL where the site will be accessible (default: Based on `ttrss_use_https`, `ttrss_hostname`, and `ttrss_port`)'
 * `keep_nginx_default_site` - `true` to leave the 'default' nginx site, `false` to delete it (default: `false`)
-* `ttrss_feed_crypt_key` - Used to encrypt credentials in database for authenticated feeds. Must be exactly 24 characters (default: `ABCDEFGHIJKLMNOPQRSTUVWX`)
 
 When using HTTPS (`ttrss_use_https`) you must either set `ttrss_cert_path` and `ttrss_cert_key_path` to certificates already present on the host, or place a `ttrss.crt` and `ttrss.key` in ansible's path (for instance in `./files`). If you plan to use self-signed certificates, they can be generated with the `generate-cert.sh` script.
 

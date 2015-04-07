@@ -8,6 +8,5 @@ ttrss_port_string: ':{{ ttrss_port }}'
 ttrss_base_url: '{{ "https" if ttrss_use_https else "http" }}://{{ ttrss_hostname }}{{ ttrss_port_string if ttrss_port != 80 and ttrss_port != 443 }}/'
 ttrss_install_path: /var/www/ttrss
 keep_default_nginx_site: false
-ttrss_feed_crypt_key: ABCDEFGHIJKLMNOPQRSTUVWX
 ttrss_cert_path: 
 ttrss_cert_key_path: 

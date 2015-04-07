@@ -5,7 +5,6 @@
     - php5-pgsql
     - php5-curl
     - curl
-    - php5-mcrypt
     - php5-cli
     - git
     - php5-common

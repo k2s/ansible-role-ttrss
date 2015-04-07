@@ -24,7 +24,7 @@
 	// You need to set this option correctly otherwise several features
 	// including PUSH, bookmarklets and browser integration will not work properly.
 
-	define('FEED_CRYPT_KEY', '{{ ttrss_feed_crypt_key }}');
+	define('FEED_CRYPT_KEY', '');
 	// Key used for encryption of passwords for password-protected feeds
 	// in the database. A string of 24 random characters. If left blank, encryption
 	// is not used. Requires mcrypt functions.
