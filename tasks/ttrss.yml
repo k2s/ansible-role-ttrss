@@ -18,30 +18,12 @@
 - name: Install ttrss config file
   template: dest=/var/www/ttrss/config.php src=ttrss-config.php owner=www-data group=www-data mode=0600
 
-- name: Remove nginix default site
-  file: path=/etc/nginx/{{ item }}/default state=absent
-  with_items:
-    - sites-enabled
-    - sites-available
-  notify: restart nginx
-  when: not keep_default_nginx_site
-
-- name: Install ssl certificate
-  copy: src=ttrss.crt dest=/etc/ssl/certs/ttrss.crt owner=root group=root mode=0644
-  when: ttrss_use_https and not ttrss_cert_path
+- name: Setup nginx location for ttrss
+  template: dest=/etc/nginx/locations-available/ttrss src=ttrss_nginx.conf
   notify: restart nginx
 
-- name: Install ssl certificate key
-  copy: src=ttrss.key dest=/etc/ssl/private/ttrss.key owner=root group=www-data mode=0640
-  when: ttrss_use_https and not ttrss_cert_key_path
-  notify: restart nginx
-
-- name: Setup nginx site config for ttrss
-  template: dest=/etc/nginx/sites-available/ttrss src=ttrss_nginx.conf
-  notify: restart nginx
-
-- name: Enable ttrss site in nginx
-  file: path=/etc/nginx/sites-enabled/ttrss state=link src=/etc/nginx/sites-available/ttrss
+- name: Enable nginx location for ttrss
+  file: path=/etc/nginx/locations-enabled/ttrss state=link src=/etc/nginx/locations-available/ttrss
   notify: restart nginx
 
 - name: Install cron task for updates

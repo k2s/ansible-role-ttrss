@@ -10,7 +10,6 @@
     - php5-common
     - php5-fpm
     - python-psycopg2
-    - nginx
     - postgresql
 
 - name: Set php configs
@@ -33,4 +32,3 @@
   with_items:
     - postgresql
     - php5-fpm
-    - nginx
