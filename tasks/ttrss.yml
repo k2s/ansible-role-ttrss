@@ -19,11 +19,11 @@
   template: dest=/var/www/ttrss/config.php src=ttrss-config.php owner=www-data group=www-data mode=0600
 
 - name: Setup nginx location for ttrss
-  template: dest=/etc/nginx/locations-available/ttrss src=ttrss_nginx.conf
+  template: dest=/etc/nginx/apps-available/ttrss src=ttrss_nginx.conf
   notify: restart nginx
 
 - name: Enable nginx location for ttrss
-  file: path=/etc/nginx/locations-enabled/ttrss state=link src=/etc/nginx/locations-available/ttrss
+  file: path=/etc/nginx/apps-enabled/ttrss state=link src=/etc/nginx/apps-available/ttrss
   notify: restart nginx
 
 - name: Install cron task for updates
