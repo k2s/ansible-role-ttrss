@@ -1,7 +1,4 @@
 ---
 ttrss_db_name: ttrss
 ttrss_db_user: ttrss
-ttrss_hostname: '{{ inventory_hostname }}'
-ttrss_port_string: ':{{ nginx_port }}'
-ttrss_base_url: '{{ "https" if nginx_use_https else "http" }}://{{ ttrss_hostname }}{{ ttrss_port_string if nginx_port != 80 and nginx_port != 443 }}/'
 ttrss_install_path: /var/www/ttrss
