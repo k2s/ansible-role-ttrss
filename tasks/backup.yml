@@ -1,0 +1,9 @@
+---
+- name: Create ttrss backup directory
+  file: path='{{ ttrss_backup_home }}/' state=directory
+
+- name: Install ttrss backup scripts
+  template: dest={{ ttrss_backup_home }}/{{ item.dest }} src={{ item.src }} mode=0750
+  with_items:
+   - { 'src': 'ttrss_backup.sh', 'dest': 'pre_backup' }
+   - { 'src': 'ttrss_restore.sh', 'dest': 'post_restore' }

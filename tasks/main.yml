@@ -2,3 +2,5 @@
 - include: dependencies.yml
 - include: ttrss.yml
 - include: database.yml
+- include: backup.yml
+  when: backup_home is defined

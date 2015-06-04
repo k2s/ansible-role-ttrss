@@ -20,9 +20,17 @@ It has been tested on Debian and Ubuntu hosts.
 
 * `nginx_base_url` - Reads from external role to determine base public URL for site
 
+### Optional External ###
+
+* `backup_home` - Directory in which to create ttrss backup scripts and stage database backups
+
 ## Dependencies ##
 
 * `ansible-role-lnpp` - Depends on nginx, PostgreSQL, and PHP installation as well as multi-app nginx config. Available at <https://github.com/isaacsimmons/ansible-role-lnpp>
+
+### Optional ###
+
+* `ansible-role-duplicity` - Depends on duplicity scripts if automated backups are desired. Available at <https://github.com/isaacsimmons/ansible-role-duplicity>.
 
 ## Example Playbook ##
 

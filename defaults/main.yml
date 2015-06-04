@@ -2,3 +2,5 @@
 ttrss_db_name: ttrss
 ttrss_db_user: ttrss
 ttrss_install_path: /var/www/ttrss
+ttrss_backup_home: '{{ backup_home }}/jobs/ttrss'
+ttrss_backup_stage: '{{ backup_home }}/staging/ttrss'
