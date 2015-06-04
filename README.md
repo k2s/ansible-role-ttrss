@@ -30,7 +30,7 @@ It has been tested on Debian and Ubuntu hosts.
 
 ### Optional ###
 
-* `ansible-role-duplicity` - Depends on duplicity scripts if automated backups are desired. Available at <https://github.com/isaacsimmons/ansible-role-duplicity>.
+* `ansible-role-duplicity` - Depends on duplicity scripts if automated backups are desired. Available at <https://github.com/isaacsimmons/ansible-role-duplicity>
 
 ## Example Playbook ##
 
