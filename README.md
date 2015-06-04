@@ -31,6 +31,7 @@ A simple playbook that just sets the one required variable:
     - hosts: all
       sudo: yes
       roles:
+         - role: ../ansible-role-lnpp
          - role: ../ansible-role-ttrss
            ttrss_db_pass: secret
 
