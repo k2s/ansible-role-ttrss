@@ -1,6 +1,6 @@
 ---
 - name: Download TTRSS
-  git: repo=https://github.com/gothfox/Tiny-Tiny-RSS.git dest=/var/www/ttrss
+  git: repo={{ ttrss_git_url }} dest=/var/www/ttrss
   notify: clear ttrss cache
 
 - name: Set TTRSS permissions
