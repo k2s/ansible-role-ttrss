@@ -15,6 +15,7 @@ It has been tested on Debian and Ubuntu hosts.
 * `ttrss_db_name` - PostgreSQL database name (default: `ttrss`)
 * `ttrss_db_user` - PostgreSQL database user (default: `ttrss`)
 * `ttrss_install_path` - Location to install TTRSS (default: `/var/www/ttrss`)
+* `ttrss_git_url` - URL for the tt-rss git repository (default: `https://tt-rss.org/gitlab/fox/tt-rss.git`)
 
 ### External ###
 
