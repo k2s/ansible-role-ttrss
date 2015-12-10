@@ -34,7 +34,7 @@
     minute: '0'
     job: /usr/bin/php /var/www/ttrss/update.php --feeds --quiet
   when: ttrss_how_to_update == "cron"
-- cron: name="ttrss_update" state=absent
+- cron: name="ttrss_update" user="www-data" state=absent
   when: ttrss_how_to_update != "cron"
 
 - name: Install init task for updates
