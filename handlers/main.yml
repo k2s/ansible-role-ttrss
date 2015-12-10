@@ -1,3 +1,8 @@
 ---
 - name: clear ttrss cache
   command: find /var/www/ttrss/cache -type f -user www-data -exec rm {} ';'
+
+- name: restart ttrss-update-daemon
+  service:
+    name: ttrss-update-daemon
+    state: restarted
