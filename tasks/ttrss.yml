@@ -33,4 +33,19 @@
     hour: '*/3'
     minute: '0'
     job: /usr/bin/php /var/www/ttrss/update.php --feeds --quiet
+  when: ttrss_how_to_update == "cron"
+- cron: name="ttrss_update" user="www-data" state=absent
+  when: ttrss_how_to_update != "cron"
 
+- name: Install init task for updates
+  template:
+    src: init/ttrss-update-daemon.conf
+    dest: /etc/init/ttrss-update-daemon.conf
+    owner: root
+    group: root
+    mode: 0644
+  notify:
+    - restart ttrss-update-daemon
+  when: ttrss_how_to_update == "daemon2"
+- file: path=/etc/init/ttrss-update-daemon.conf state=absent
+  when: ttrss_how_to_update != "daemon2"

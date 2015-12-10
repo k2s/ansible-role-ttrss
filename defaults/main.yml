@@ -5,3 +5,5 @@ ttrss_install_path: /var/www/ttrss
 ttrss_backup_home: '{{ backup_home }}/jobs/ttrss'
 ttrss_backup_stage: '{{ backup_home }}/staging/ttrss'
 ttrss_git_url: https://tt-rss.org/gitlab/fox/tt-rss.git
+# possible values: daemon2 | cron | none
+ttrss_how_to_update: daemon2
