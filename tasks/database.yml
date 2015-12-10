@@ -6,11 +6,10 @@
 - name: Create ttrss postgres database
   postgresql_db: name='{{ ttrss_db_name }}' owner='{{ ttrss_db_user }}' encoding='UTF-8' template=template0 lc_ctype='en_US.UTF-8' lc_collate='en_US.UTF-8'
   sudo_user: postgres
+  register: createdb_postgis_result
 
 - name: init db schema
   shell: psql -h localhost -U '{{ ttrss_db_user }}' -f /var/www/ttrss/schema/ttrss_schema_pgsql.sql '{{ ttrss_db_name }}'
-         && touch /root/ttrss_schema_loaded
-         creates=/root/ttrss_schema_loaded
+  when: createdb_postgis_result.changed == True
   environment:
     PGPASSWORD: '{{ ttrss_db_pass }}'
-
